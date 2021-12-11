@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 import { useNavigate } from "react-router-dom";
 import {
   selectUserName,
@@ -75,6 +76,19 @@ function Header() {
         <NavMenu>
           <MenuContainer>
             {navMenuIcons.map((item) => {
+              if (item.name === "HOME") {
+                return (
+                  <a key={item.name}>
+                    <Link
+                      style={{ textDecoration: "none", color: "white" }}
+                      to={"/"}
+                    >
+                      <img src={`/images/${item.fileName}`} alt="" />
+                      <span>{item.name}</span>
+                    </Link>
+                  </a>
+                );
+              }
               return (
                 <a key={item.name}>
                   <img src={`/images/${item.fileName}`} alt="" />
